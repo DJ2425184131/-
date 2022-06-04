@@ -42,9 +42,13 @@
                     </div>
                 </a-tab-pane>
 
-                <a-tab-pane key="2" tab="注册" >
+                <a-tab-pane key="  2" tab="注册" >
                      <div class="item">
-                       <a-input placeholder="用户名" size="large" >
+                       <a-input     
+                            placeholder="用户名" 
+                            size="large" 
+                            v-model:value="regForm.account"
+                        >
                            <template 
                             v-slot:prefix
                             >
@@ -54,7 +58,11 @@
                    </div> 
 
                     <div class="item">
-                        <a-input placeholder="密码"  size="large">
+                        <a-input 
+                            placeholder="密码"  
+                            size="large"
+                            v-model:value="regForm.password"
+                        >
                             <template 
                             v-slot:prefix
                             >
@@ -69,12 +77,16 @@
                             v-slot:prefix
                             >
                                 <MailOutlined />
-                            </template>
+                            </template>npm 
                         </a-input>
                     </div> 
 
                     <div class="item">
-                        <a-button type="primary" size="large">
+                        <a-button 
+                            @click="register"
+                            type="primary" 
+                            size="large"
+                        >
                             注册
                         </a-button>
                     </div>

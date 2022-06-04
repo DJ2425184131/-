@@ -1,11 +1,18 @@
-const koa=require('koa');
-const context = require('koa/lib/context');
+const Koa = require('koa');
+const koaBody= require('koa-body');
+const { connect } = require('./db')
+const registerRoutes = require('./routers/index.js')
+const cors=require('@koa/cors')
 
-const app=new koa(); 
+const app=new Koa(); 
 
-
-app.listen(3000,() =>{
-    console.log('启动成功')
-})
-
-console.log("添加分支")
+connect().then(() =>{
+    app.use(cors());
+    app.use(koaBody());
+    
+    registerRoutes(app);
+    
+    app.listen(3000,() =>{
+        console.log('启动成功')
+    });
+});
